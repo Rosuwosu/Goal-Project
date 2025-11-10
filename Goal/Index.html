@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Goal Widget</title>
+  <style>
+    body {
+      background: #0d1117;
+      color: #f0f6fc;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+    img {
+      width: 300px;
+      margin: 1rem 0;
+    }
+    pre {
+      background: #161b22;
+      padding: 1rem;
+      border-radius: 10px;
+      display: inline-block;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎯 Goal Widget Test</h1>
+  
+  <!-- Show your PNG -->
+  <img src="goal-widget.png" alt="Goal Image">
+
+  <h3>Goal Data:</h3>
+  <pre id="dataBox">Loading...</pre>
+
+  <script>
+    fetch("goal-widget.json")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("dataBox").textContent = JSON.stringify(data, null, 2);
+      })
+      .catch(err => {
+        document.getElementById("dataBox").textContent = "Error loading JSON 😢";
+        console.error(err);
+      });
+  </script>
+</body>
+</html>
